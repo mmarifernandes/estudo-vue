@@ -1,19 +1,12 @@
 <script setup>
 import { ref } from 'vue'
-// import WelcomeItem from './WelcomeItem.vue'
-// import DocumentationIcon from './icons/IconDocumentation.vue'
-// import ToolingIcon from './icons/IconTooling.vue'
-// import EcosystemIcon from './icons/IconEcosystem.vue'
-// import CommunityIcon from './icons/IconCommunity.vue'
-// import SupportIcon from './icons/IconSupport.vue'
 
-// const parentMessage = ref('Parent')
-const items = ref([{ message: 'tarefa 1' }, { message: 'tarefa 2' }])
+const items = ref([])
 const tarefa = ref('');
 
 const adicionar = () => {
     if (tarefa.value) {
-        items.value.push({ message: tarefa.value });
+        items.value.push({ descricao: tarefa.value, checked: false });
         tarefa.value = ''; // Limpa o campo de entrada
     } else {
         alert('A tarefa nao pode ser vazia');
@@ -23,22 +16,28 @@ const adicionar = () => {
 </script>
 
 <template>
-    <div class="container">
-        <div class="list">
-            <li v-for="(item, index) in items">
-                <input type="checkbox" name="" id="">
-                {{ index }} - {{ item.message }}
-            </li>
-        </div>
-    </div>
+
     <div class="add">
-        <input type="text" v-model="tarefa" placeholder="Escreva aqui">
+        <textarea v-model="tarefa" placeholder="Escreva aqui"> </textarea>
         <button v-on:click="adicionar">Adicionar</button>
     </div>
+
+    <div class="container">
+        <div class="list">
+            <li v-if="items.length > 0" v-for="(item, index) in items" class="" :class="{ done: item.checked }">
+                <p> <input type="checkbox" v-model="item.checked" :id="'checkbox-' + index">
+               {{ item.descricao }}</p>
+            </li>
+            <li v-else class="vazio"> Vazio.. </li>
+        </div>
+    </div>
+    
 </template>
 
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
 .container {
     height: fit-content;
     width: 500px;
@@ -47,13 +46,67 @@ const adicionar = () => {
     border-radius: 10px;
     padding: 15px;
     list-style: none;
+    line-break: anywhere;
+    
 }
 .list{
-    color: black;
+    color: rgb(79, 79, 79);
+}
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+p{
+    display: flex;
+    align-items: baseline;
+    line-height: 18px;
+    font-family: "Patrick Hand", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2rem;
+
+}
+.add textarea{
+    height: 50px;
+    width: 420px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 3px solid rgb(253, 239, 239);
+    resize: none;
+    font-family: "Patrick Hand", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
 }
 .add{
     display: flex;
-    justify-content: center;
-    padding: 15px;
+    /* justify-content: center; */
+    padding-bottom: 15px;
+    justify-content: space-between;
+}
+.done {
+    text-decoration: line-through;
+    color: gray;
+    background-color: rgb(247, 232, 232);
+    border-radius: 10px;
+}
+.vazio{
+    color: gray;
+}
+li{
+    padding: 8px;
+}
+li:hover{
+    background-color: rgb(245, 226, 226);
+    border-radius: 10px;
+
+}
+button{
+    border-radius: 10px;
+    background-color: white;
+    border: 3px solid rgb(253, 239, 239);
+    font-family: "Patrick Hand", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
 }
 </style>
