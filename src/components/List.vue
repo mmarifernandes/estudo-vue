@@ -36,7 +36,7 @@ const adicionar = () => {
 
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Patrick+Hand&display=swap');
 
 .container {
     height: fit-content;
@@ -59,10 +59,10 @@ p{
     display: flex;
     align-items: baseline;
     line-height: 18px;
-    font-family: "Patrick Hand", cursive;
+    font-family: "Open Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
 
 }
 .add textarea{
@@ -72,10 +72,10 @@ p{
     padding: 10px;
     border: 3px solid rgb(253, 239, 239);
     resize: none;
-    font-family: "Patrick Hand", cursive;
+    font-family: "Open Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 1rem;
+    /* font-size: 1rem; */
 }
 .add{
     display: flex;
@@ -98,15 +98,17 @@ li{
 li:hover{
     background-color: rgb(245, 226, 226);
     border-radius: 10px;
+    
 
 }
 button{
     border-radius: 10px;
     background-color: white;
     border: 3px solid rgb(253, 239, 239);
-    font-family: "Patrick Hand", cursive;
+    font-family: "Open Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 1rem;
+    cursor: pointer;
+    /* font-size: 1rem; */
 }
 </style>
